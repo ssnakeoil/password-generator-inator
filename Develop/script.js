@@ -11,29 +11,46 @@ var specialNorm = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "=", "-", "
 var specialWeird = [" ", "[", "]", "{", "}", "|", "~", "`", "_", "+"];
 var count = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-// Series of prompts to customize the user's password
-function generatePassword() {
+// Prompt to customize password length
+function generateLength() {
   let passwordLength = prompt("How long would you like your password to be?");
   if (typeof passwordLength === "string") {
     alert("Value entered is not a number. Please choose a number between 4 and 20.");
-    generatePassword();
+    generateLength();
   }
   else if (passwordLength <= 4 || passwordLenght >= 20) {
     alert("Number is not between 4 and 20.");
-    generatePassword();
+    generateLength();
   }
   else {
-  // Write password to the #password input
-  function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
-
-    passwordText.value = password;
-  }
+    generateLength();
   }
 }
 
+// Series of confirm windows to customize user's password
+function generatePassword () {
+  let settingCapital = confirm("Confirm for capital letters.");
+  let settingLower = confirm("Confirm for lowercase letters.");
+  let settingNorm = confirm("Confirm for special characters: !@#$%^&*()=-<>/?,.");
+  let settingWeird = confirm("Confirm for spaces and special characters: []{}|~`_+");
+  let settingCount = confirm("Confirm for numbers.");
 
+  if (!settingCapital && !settingLower && !settingNorm && !settingWeird && !settingCount) {
+    alert("Password cannot be generated with no parameters.")
+    generatePassword();
+  }
+  var userPassword = "";
+
+
+}
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
