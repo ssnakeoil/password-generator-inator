@@ -26,14 +26,16 @@ function generatePassword () {
     generatePassword();
   }
 
-  let passwordLength = prompt("How many characters would you like your password to be?");
+  let passwordLength = prompt("How many characters should your password contain? (Must be between 8 and 128)");
   
+  // if loop that restricts user to entering numbers only
   if (typeof passwordLength === String) {
     alert("Value entered is not a number. Please choose a number between 4 and 20.");
     generatePassword();
   }
-  else if (passwordLength <= 4 || passwordLength >= 21) {
-    alert("Number is not between 5 and 20.");
+  // restricts user to choosing a number between 8 and 128
+  else if (passwordLength < 8 || passwordLength > 128) {
+    alert("Number is not between 8 and 128.");
     generatePassword();
   }
 
