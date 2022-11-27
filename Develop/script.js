@@ -11,33 +11,29 @@ var specialNorm = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "=", "-", "
 var specialWeird = [" ", "[", "]", "{", "}", "|", "~", "`", "_", "+"];
 var count = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-// Prompt to customize password length
-function generateLength() {
-  let passwordLength = prompt("How long would you like your password to be?");
-  if (typeof passwordLength === String) {
-    alert("Value entered is not a number. Please choose a number between 4 and 20.");
-    generateLength();
-  }
-  else if (passwordLength <= 4 || passwordLength >= 21) {
-    alert("Number is not between 5 and 20.");
-    generateLength();
-  }
-  else {
-    generateLength();
-  }
-}
-
 // Series of confirm windows to customize user's password
 function generatePassword () {
+  
   let settingCapital = confirm("Confirm for capital letters.");
   let settingLower = confirm("Confirm for lowercase letters.");
   let settingNorm = confirm("Confirm for special characters: !@#$%^&*()=-<>/?,.");
   let settingWeird = confirm("Confirm for spaces and special characters: []{}|~`_+");
   let settingCount = confirm("Confirm for numbers.");
   
-  // User receives error if no parameters are chosen
+    // User receives error if no parameters are chosen
   if (!settingCapital && !settingLower && !settingNorm && !settingWeird && !settingCount) {
     alert("Please select one.")
+    generatePassword();
+  }
+
+  let passwordLength = prompt("How many characters would you like your password to be?");
+  
+  if (typeof passwordLength === String) {
+    alert("Value entered is not a number. Please choose a number between 4 and 20.");
+    generatePassword();
+  }
+  else if (passwordLength <= 4 || passwordLength >= 21) {
+    alert("Number is not between 5 and 20.");
     generatePassword();
   }
 
@@ -45,11 +41,11 @@ function generatePassword () {
   var userPassword = [];
 
   // Establishing concat action if statements for generator to loop through depending on chosen settings
-  if (settingCapital) {userPassword.concat(letterCapital)}
-  if (settingLower) {userPassword.concat(letterLower)}
-  if (settingNorm) {userPassword.concat(specialNorm)}
-  if (settingWeird) {userPassword.concat(specialWeird)}
-  if (settingCount) {userPassword.concat(count)}
+  if (settingCapital) {var userPassword = userPassword.concat(letterCapital)}
+  if (settingLower) {var userPassword = userPassword.concat(letterLower)}
+  if (settingNorm) {var userPassword = userPassword.concat(specialNorm)}
+  if (settingWeird) {var userPassword = userPassword.concat(specialWeird)}
+  if (settingCount) {var userPassword = userPassword.concat(count)}
 
   // Temporary console.log to see if generator is working correctly at this point. (REMOVE)
   console.log(userPassword)
@@ -58,10 +54,10 @@ function generatePassword () {
   var passwordPrintable = ""
 
   // Adding for loop that will loop through if statements for as many characters as the user selected
-  for (var i = 0; i < generateLength; i++) {
+  for (var i = 0; i < passwordLength; i++) {
     passwordPrintable = passwordPrintable + userPassword[Math.floor(Math.random()*userPassword.length)]
   }
-
+  return passwordPrintable;
   //
 
 }
