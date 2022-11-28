@@ -55,7 +55,7 @@ function generatePassword () {
   // Creating an empty variable for generator to fill into
   var passwordPrintable = ""
 
-  // Adding for loop that will loop through if statements for as many characters as the user selected
+  // Adding for loop that will loop through if statements for as many characters as the user selected + randomly pick characters
   for (var i = 0; i < passwordLength; i++) {
     passwordPrintable = passwordPrintable + userPassword[Math.floor(Math.random()*userPassword.length)]
   }
