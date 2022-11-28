@@ -43,11 +43,11 @@ function generatePassword () {
   var userPassword = [];
 
   // Establishing concat action if statements for generator to loop through depending on chosen settings
-  if (settingCapital) {var userPassword = userPassword.concat(letterCapital)}
-  if (settingLower) {var userPassword = userPassword.concat(letterLower)}
-  if (settingNorm) {var userPassword = userPassword.concat(specialNorm)}
-  if (settingWeird) {var userPassword = userPassword.concat(specialWeird)}
-  if (settingCount) {var userPassword = userPassword.concat(count)}
+  if (settingCapital) {userPassword = userPassword.concat(letterCapital)}
+  if (settingLower) {userPassword = userPassword.concat(letterLower)}
+  if (settingNorm) {userPassword = userPassword.concat(specialNorm)}
+  if (settingWeird) {userPassword = userPassword.concat(specialWeird)}
+  if (settingCount) {userPassword = userPassword.concat(count)}
 
   // Temporary console.log to see if generator is working correctly at this point. (REMOVE)
   console.log(userPassword)
